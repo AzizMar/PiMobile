@@ -11,4 +11,6 @@ package GUI.visiteur;
  */
 public class Register {
     
+    //test comment
+    
 }
