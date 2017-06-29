@@ -78,7 +78,7 @@ public class Register {
         
         btnRegister.addActionListener(e->{
         
-            if (!(txtPwd.equals(txtPwdC))) {
+            if (!(txtPwd==txtPwdC)) {
                 
                 insertUser();
                 
@@ -98,7 +98,7 @@ public class Register {
     private void insertUser(){
         
                         ConnectionRequest req = new ConnectionRequest();
-                req.setUrl("http://localhost:3306/insertUser.php?username=" + txtUsername.getText() + "&email=" + txtEmail.getText() + "&pwd=" + txtPwd.getText() + "");
+                req.setUrl("http://www.azizxmar.heliohost.org/userInsert.php?username=" + txtUsername.getText() + "&email=" + txtEmail.getText() + "&pwd=" + txtPwd.getText() + "");
 
                 req.addResponseListener(new ActionListener<NetworkEvent>() {
 
@@ -109,6 +109,10 @@ public class Register {
 
                         if (s.equals("success")) {
                             Dialog.show("Confirmation", "Utilisateur Ajoute ok", "Ok", null);
+                        }
+                        else
+                        {
+                            System.out.println("aaaaaaaaaaaaaaaaa");
                         }
                     }
                 });
