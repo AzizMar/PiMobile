@@ -1,4 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<component type="Form" name="HOME_VISITOR_GUI" cloudDestinationProperty="HOME_VISITOR_GUI" >
+<component type="Form" name="HOME_VISITOR_GUI" cloudDestinationProperty="HOME_VISITOR_GUI" layout="FlowLayout" flowLayoutFillRows="false" flowLayoutAlign="4" flowLayoutValign="4" >
+  <component type="Container" name="Container" cloudDestinationProperty="Container" layout="BoxLayout" boxLayoutAxis="Y" >
+    <component type="ImageViewer" name="imgHeader" cloudDestinationProperty="imgHeader" >
+      <custom name="image" type="com.codename1.ui.Image" value="switch_on.png" />
+    </component>
+    <component type="Label" name="lblDepart" cloudDestinationProperty="lblDepart" text="Depart" >
+    </component>
+    <component type="TextField" name="txtDepart" cloudBoundProperty="text" cloudDestinationProperty="txtDepart" text="" hint="Depart" >
+    </component>
+    <component type="Label" name="lblDestination" cloudDestinationProperty="lblDestination" text="Destination" >
+    </component>
+    <component type="TextField" name="txtDestination" cloudBoundProperty="text" cloudDestinationProperty="txtDestination" text="" hint="Destination" >
+    </component>
+    <component type="Button" name="btnRechercher" cloudDestinationProperty="btnRechercher" text="Rechercher" >
+    </component>
+  </component>
 </component>

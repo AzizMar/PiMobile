@@ -1,7 +1,7 @@
 package com.mycompany.myapp;
 
 
-import DBEntities.Annonce;
+import GUI.visiteur.Home;
 import com.codename1.ui.Display;
 import com.codename1.ui.Form;
 import com.codename1.ui.Dialog;
@@ -33,6 +33,9 @@ public class MyApplication {
     
     public void start() {
        
+        Home hv = new Home(theme) ;
+        
+        hv.ShowForm();
         
     }
 
