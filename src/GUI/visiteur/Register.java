@@ -6,11 +6,16 @@
 package GUI.visiteur;
 
 import com.codename1.components.ImageViewer;
+import com.codename1.io.ConnectionRequest;
+import com.codename1.io.NetworkEvent;
+import com.codename1.io.NetworkManager;
 import com.codename1.ui.Button;
 import com.codename1.ui.Container;
+import com.codename1.ui.Dialog;
 import com.codename1.ui.Form;
 import com.codename1.ui.Label;
 import com.codename1.ui.TextField;
+import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.util.Resources;
 import com.codename1.ui.util.UIBuilder;
 
@@ -69,8 +74,54 @@ public class Register {
             hv.showBack();
 
         });
+        
+        
+        btnRegister.addActionListener(e->{
+        
+            if (!(txtPwd.equals(txtPwdC))) {
+                
+                insertUser();
+                
+            } else {
+                
+                Dialog.show("Erreur", "passwords do not match", "Ok", null);
+                
+            }
+            
+        
+                });
     
     }
+    
+    
+    
+    private void insertUser(){
+        
+                        ConnectionRequest req = new ConnectionRequest();
+                req.setUrl("http://localhost:3306/insertUser.php?username=" + txtUsername.getText() + "&email=" + txtEmail.getText() + "&pwd=" + txtPwd.getText() + "");
+
+                req.addResponseListener(new ActionListener<NetworkEvent>() {
+
+                    @Override
+                    public void actionPerformed(NetworkEvent evt) {
+                        byte[] data = (byte[]) evt.getMetaData();
+                        String s = new String(data);
+
+                        if (s.equals("success")) {
+                            Dialog.show("Confirmation", "Utilisateur Ajoute ok", "Ok", null);
+                        }
+                    }
+                });
+                
+                NetworkManager.getInstance().addToQueue(req);
+        
+    }
+    
+    
+    
+    
+    
+    
 
     public UIBuilder getUib() {
         return uib;
