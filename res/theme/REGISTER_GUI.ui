@@ -1,4 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<component type="Form" name="REGISTER_GUI" cloudDestinationProperty="REGISTER_GUI" >
+<component type="Form" name="REGISTER_GUI" cloudDestinationProperty="REGISTER_GUI" layout="FlowLayout" flowLayoutFillRows="false" flowLayoutAlign="4" flowLayoutValign="4" >
+  <component type="Container" name="Container" cloudDestinationProperty="Container" layout="BoxLayout" boxLayoutAxis="Y" >
+    <component type="Label" name="lblUsername" cloudDestinationProperty="lblUsername" text="Username:" >
+    </component>
+    <component type="TextField" name="txtUsername" cloudBoundProperty="text" cloudDestinationProperty="txtUsername" text="" >
+    </component>
+    <component type="Label" name="lblEmail" cloudDestinationProperty="lblEmail" text="E-mail:" >
+    </component>
+    <component type="TextField" name="txtEmail" cloudBoundProperty="text" cloudDestinationProperty="txtEmail" text="" constraint="1" >
+    </component>
+    <component type="Label" name="lblPwd" cloudDestinationProperty="lblPwd" text="Password:" >
+    </component>
+    <component type="TextField" name="txtPwd" cloudBoundProperty="text" cloudDestinationProperty="txtPwd" text="" >
+    </component>
+    <component type="Label" name="lblPwdC" cloudDestinationProperty="lblPwdC" text="Password confirmation:" >
+    </component>
+    <component type="TextField" name="txtPwdC" cloudBoundProperty="text" cloudDestinationProperty="txtPwdC" text="" >
+    </component>
+    <component type="Button" name="btnRegister" cloudDestinationProperty="btnRegister" text="Register" >
+    </component>
+  </component>
 </component>

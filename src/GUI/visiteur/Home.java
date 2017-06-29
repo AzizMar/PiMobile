@@ -41,7 +41,9 @@ public class Home {
     
     private Button btnRechercher;
     
+    public Login l;
     
+    public Register r;
 
     public Home(Resources theme) {
         
@@ -55,7 +57,9 @@ public class Home {
         
         f = ctnHome.getComponentForm();
         
-        
+        Login l = new Login(theme,f);
+        Register r = new Register(theme, f);
+
         
         
         
@@ -73,14 +77,13 @@ public class Home {
 
         f.getToolbar().addCommandToSideMenu("Login", null, e->{
 
-            // show login Page
-            
+                l.getForm().show();
+                
         });
         
         f.getToolbar().addCommandToSideMenu("Register", null, e->{
-
-            // show Register Page
-            
+                
+            r.getF().show();
         });
         
     }
@@ -94,6 +97,10 @@ public class Home {
         f.show();
     }
     
+        public void ShowBack(){
+        
+        f.showBack();
+    }
     
     
     

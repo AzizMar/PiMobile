@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<component type="Form" name="LOGIN_GUI" cloudDestinationProperty="LOGIN_GUI" >
+<component type="Form" name="LOGIN_GUI" cloudDestinationProperty="LOGIN_GUI" layout="FlowLayout" flowLayoutFillRows="false" flowLayoutAlign="4" flowLayoutValign="4" >
+  <component type="Container" name="Container" cloudDestinationProperty="Container" layout="BoxLayout" boxLayoutAxis="Y" >
+    <component type="Label" name="lblLogin" cloudDestinationProperty="lblLogin" text="Username:" >
+    </component>
+    <component type="TextField" name="txtLogin" cloudBoundProperty="text" cloudDestinationProperty="txtLogin" text="" >
+    </component>
+    <component type="Label" name="lblPwd" cloudDestinationProperty="lblPwd" text="Password:" >
+    </component>
+    <component type="TextField" name="txtPwd" cloudBoundProperty="text" cloudDestinationProperty="txtPwd" text="" constraint="65536" >
+    </component>
+    <component type="Button" name="btnLogin" cloudDestinationProperty="btnLogin" text="Login" >
+    </component>
+  </component>
 </component>
