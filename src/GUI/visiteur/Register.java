@@ -78,7 +78,7 @@ public class Register {
         
         btnRegister.addActionListener(e->{
         
-            if (!(txtPwd==txtPwdC)) {
+            if (txtPwd.getText().equals(txtPwdC.getText())) {
                 
                 insertUser();
                 
@@ -112,7 +112,7 @@ public class Register {
                         }
                         else
                         {
-                            System.out.println("aaaaaaaaaaaaaaaaa");
+                            System.out.println("Add failed");
                         }
                     }
                 });
