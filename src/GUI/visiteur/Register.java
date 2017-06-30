@@ -108,7 +108,7 @@ public class Register {
                         String s = new String(data);
 
                         if (s.equals("success")) {
-                            Dialog.show("Confirmation", "Utilisateur Ajoute ok", "Ok", null);
+                            Dialog.show("Confirmation", "Utilisateur Ajoute", "Ok", null);
                         }
                         else
                         {
