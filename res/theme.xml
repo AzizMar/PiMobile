@@ -56,6 +56,7 @@
     <image name="Menu.borderTop_2.png" type="multi"  />
     <image name="Menu.borderTopL_2.png" type="multi"  />
     <image name="Menu.borderTopR_2.png" type="multi"  />
+    <ui name="MESSAGES_GUI" />
     <image name="OKGR.borderBottom_1.png" type="multi"  />
     <image name="OKGR.borderBottomL_1.png" type="multi"  />
     <image name="OKGR.borderBottomR_1.png" type="multi"  />

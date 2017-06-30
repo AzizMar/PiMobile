@@ -44,15 +44,12 @@ public class MesVoitures {
 
     public MesVoitures(Resources theme) {
         
-                uib = new UIBuilder();
-        
-        
+        uib = new UIBuilder();
         ctnMesVoiture = uib.createContainer(theme, "VOITURE_GUI");
-        
         f = ctnMesVoiture.getComponentForm();
-
         btnAjouter = (Button) uib.findByName("btnAjouter", ctnMesVoiture);
         
+        initMesVoitures();
         
         
         
@@ -65,7 +62,16 @@ public class MesVoitures {
         });
         
         
-                ConnectionRequest con = new ConnectionRequest();
+
+        
+        
+        
+        
+    }
+    
+    public void initMesVoitures(){
+        
+                  ConnectionRequest con = new ConnectionRequest();
                   con.setUrl("http://www.azizxmar.heliohost.org/voitureSelect.php");
         
                 con.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -74,32 +80,27 @@ public class MesVoitures {
             public void actionPerformed(NetworkEvent evt) {
                 String rep = new String(con.getResponseData());
 
-        NetworkManager.getInstance().addToQueue(con);
 
          for (Voiture v : getListVoiture(rep)) {
                         
                          System.out.println(v.getMarque());
                          
                       }
-            
+
             }
             
             
         });
-        
-        
-        
-        
-    }
-    
+                            NetworkManager.getInstance().addToQueue(con);
+
+    }    
         public ArrayList<Voiture> getListVoiture(String json) {
-        
+
         ArrayList<Voiture> listVoitures = new ArrayList<>();
 
         try {
 
             JSONParser j = new JSONParser();
-           
 
             Map<String, Object> voitures = j.parseJSON(new CharArrayReader(json.toCharArray()));
 
@@ -111,11 +112,14 @@ public class MesVoitures {
                 v.setMarque(obj.get("marque").toString());
                 v.setNbPlaces(Integer.parseInt(obj.get("nombreplaces").toString()));
                 v.setDescription(obj.get("description").toString());
+                System.out.println(obj.get("matricule").toString());
                 listVoitures.add(v);
 
             }
 
         } catch (IOException ex) {
+                       System.out.println("catch");
+
          }
         return listVoitures;
 

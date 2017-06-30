@@ -11,7 +11,7 @@ package Entities;
  */
 public class Thread {
     
-    private int  id,created_by_id;
+    public int  id,created_by_id;
     private String subject;
 
     public Thread(int id, int created_by_id, String subject) {

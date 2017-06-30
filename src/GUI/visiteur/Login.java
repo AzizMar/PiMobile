@@ -6,6 +6,7 @@
 package GUI.visiteur;
 
 import Entities.User;
+import Entities.Utility;
 import com.codename1.components.ImageViewer;
 import com.codename1.io.CharArrayReader;
 import com.codename1.io.ConnectionRequest;
@@ -96,13 +97,9 @@ public class Login {
         con.addResponseListener((NetworkEvent evt) -> {
             
             String rep = new String(con.getResponseData());
-            System.out.println(rep);
                     ArrayList<User> usersList = getListUser(rep);
                     
-//                    usersList.forEach(item->{
-//                        
-//                       
-//                        });
+
                     for (User u : usersList) {
                         
                          System.out.println(u.getPassword());
@@ -110,7 +107,8 @@ public class Login {
                           if (u.getUsername().equals(txtLogin.getText()) && u.getPassword().startsWith(txtPwd.getText())) {
                             
                         System.out.println("login success²");
-                        
+                              Utility.loggedUserId=u.getId();
+                              System.out.println(Utility.loggedUserId);
                               GUI.user.Home uh = new GUI.user.Home(theme);
                               uh.getF().show();
                             
@@ -138,6 +136,8 @@ public class Login {
         
     }
     
+    
+                    // SELECT USERS
         public ArrayList<User> getListUser(String json) {
         
         ArrayList<User> listUsers = new ArrayList<>();
@@ -153,6 +153,7 @@ public class Login {
 
             for (Map<String, Object> obj : list) {
                 User u = new User();
+                u.setId(Integer.parseInt(obj.get("id").toString()));
                 u.setUsername(obj.get("username").toString());
                 u.setEmail(obj.get("email").toString());
                 u.setPassword(obj.get("password").toString());

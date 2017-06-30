@@ -23,6 +23,8 @@ import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.util.Resources;
 import com.codename1.ui.util.UIBuilder;
 import Entities.Thread;
+import Entities.Utility;
+import Entities.Voiture;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -86,8 +88,10 @@ public class Home {
 
         f.getToolbar().addCommandToSideMenu("Mes voitures", null, e->{
 
-            MesVoitures mv = new MesVoitures(theme);
-            mv.getF().show();
+//            MesVoitures mv = new MesVoitures(theme);
+//            mv.getF().show();
+
+            initMesVoitures();
 
 
         });
@@ -95,30 +99,10 @@ public class Home {
         f.getToolbar().addCommandToSideMenu("Mes Messages", null, e->{
                 
             System.out.println("mes messages clicked");
-            
-                ConnectionRequest con = new ConnectionRequest();
-                con.setUrl("http://www.azizxmar.heliohost.org/threadSelect.php");
-            
-        con.addResponseListener((NetworkEvent evt) -> {
-            
-            String rep = new String(con.getResponseData());
-           // System.out.println(rep);
-                    ArrayList<Thread> threadsList = getListThread(rep);
-                    
-
-                    for (Thread t : threadsList) {
-                        
-                        System.out.println(t.getSubject());
-                      
-                      }
-                            
-                            
-                   System.out.println(threadsList.size());
-                            
-                });
-
-
+            initMesMessages();
+              
         });
+        
         
         f.getToolbar().addCommandToSideMenu("Ajouter Annonce", null, e->{
 
@@ -266,7 +250,176 @@ public class Home {
          
           return listAnnonces;
          
-         }         
+         }  
+    
+    
+    
+///////////////////////////////////////////////////// MESSAGES ////////////////////////////////////////////////////////
+    
+      public void initMesMessages(){
+        
+                ConnectionRequest con = new ConnectionRequest();
+                con.setUrl("http://www.azizxmar.heliohost.org/threadSelect.php");
+                Form fmsg = new Form("Inbox", BoxLayout.y());
+
+        con.addResponseListener((NetworkEvent evt) -> {
+            
+            String rep = new String(con.getResponseData());
+           // System.out.println(rep);
+                    ArrayList<Entities.Thread> threadsList = getListThread(rep);
+                    
+
+                    for (Entities.Thread t : threadsList) {
+                        
+                        if (t.created_by_id==Utility.loggedUserId) {
+                            
+                        
+                            System.out.println(t.created_by_id);
+                        System.out.println(t.getSubject());
+                        
+                        Container cmsg = new Container(new BoxLayout(BoxLayout.X_AXIS));
+                        
+                        Label lblSubject = new Label("Sujet: "+t.getSubject());
+                        cmsg.addPointerPressedListener(e->{
+                        
+                            System.out.println(lblSubject.getText());
+                        });
+                        cmsg.add(lblSubject);
+                        fmsg.add(cmsg);  
+                        }           
+                    else{
+                            System.out.println("Boite Vide");
+                        }
+                 }       
+   
+                fmsg.show();
+
+                            
+                });
+
+                           NetworkManager.getInstance().addToQueue(con);
+
+    }
+    //JSON PARSER Messages
+     public ArrayList<Entities.Thread> getListThread(String json) {
+        
+        ArrayList<Entities.Thread> listThreads = new ArrayList<>();
+
+        try {
+
+            JSONParser j = new JSONParser();
+           
+
+            Map<String, Object> threads = j.parseJSON(new CharArrayReader(json.toCharArray()));
+
+            List<Map<String, Object>> list = (List<Map<String, Object>>) threads.get("thread");
+
+            for (Map<String, Object> obj : list) {
+                Entities.Thread t = new Entities.Thread();
+                
+                t.setCreatedById(Integer.parseInt(obj.get("created_by_id").toString()));
+                t.setSubject(obj.get("subject").toString());
+                listThreads.add(t);
+              //  System.out.println(obj.get("username").toString());
+
+            }
+
+        } catch (IOException ex) {
+         }
+        return listThreads;
+
+    }
+     
+ ///////////////////////////////////////////////////// MESSAGES  END ////////////////////////////////////////////////////////
+    
+      ///////////////////////////////////////////////////// VOITURES BEGIN ////////////////////////////////////////////////////////
+
+     
+     
+    
+         // VOITURES
+      public void initMesVoitures(){
+        
+        
+                  ConnectionRequest con = new ConnectionRequest();
+                  con.setUrl("http://www.azizxmar.heliohost.org/voitureSelect.php");
+                   Form fvt = new Form("Voitures", BoxLayout.y());
+                con.addResponseListener(new ActionListener<NetworkEvent>() {
+
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                String rep = new String(con.getResponseData());
+
+
+           for (Voiture v : getListVoiture(rep)) {
+                        
+                       // if (v.getProprietaire_id()==Utility.loggedUserId) {
+                            
+                        
+                        System.out.println(v.getProprietaire_id());
+                        System.out.println(v.getMarque());
+                        
+                        Container cvt = new Container(new BoxLayout(BoxLayout.X_AXIS));
+                        
+                        Label lblMatricule = new Label("Matricule: "+v.getMatricule());
+                        cvt.addPointerPressedListener(e->{
+                        
+                            System.out.println(lblMatricule.getText());
+                        });
+                        cvt.add(lblMatricule);
+                        fvt.add(cvt);  
+                        //}           
+                   // else{
+                  //          System.out.println(" Vide");
+                  //      }
+                 }       
+   
+                fvt.show();
+
+            }
+            
+            
+        });
+                                               NetworkManager.getInstance().addToQueue(con);
+
+    }
+    //JSON PARSER Messages
+     public ArrayList<Voiture> getListVoiture(String json) {
+
+        ArrayList<Voiture> listVoitures = new ArrayList<>();
+
+        try {
+
+            JSONParser j = new JSONParser();
+
+            Map<String, Object> voitures = j.parseJSON(new CharArrayReader(json.toCharArray()));
+
+            List<Map<String, Object>> list = (List<Map<String, Object>>) voitures.get("Voiture");
+
+            for (Map<String, Object> obj : list) {
+                Voiture v = new Voiture();
+                
+                        
+               // v.setProprietaire_id(Integer.parseInt(obj.get("proprietaire_id").toString())); 
+                //v.setProprietaire_id(obj.get("proprietaire_id").toString());
+                v.setProprietaire_id(Integer.parseInt(obj.get("proprietaire_id").toString()));
+                v.setMarque(obj.get("marque").toString());
+                v.setNbPlaces(Integer.parseInt(obj.get("nombreplaces").toString()));
+                v.setDescription(obj.get("description").toString());
+                System.out.println(obj.get("matricule").toString());
+                listVoitures.add(v);
+
+            }
+
+        } catch (IOException ex) {
+                       System.out.println("catch");
+
+         }
+        return listVoitures;
+
+    }
+     
+     
 
     public Form getF() {
         return f;
@@ -282,32 +435,6 @@ public class Home {
         f.showBack();
     }
     
-            public ArrayList<Thread> getListThread(String json) {
-        
-        ArrayList<Thread> listThreads = new ArrayList<>();
-
-        try {
-
-            JSONParser j = new JSONParser();
            
-
-            Map<String, Object> threads = j.parseJSON(new CharArrayReader(json.toCharArray()));
-
-            List<Map<String, Object>> list = (List<Map<String, Object>>) threads.get("thread");
-
-            for (Map<String, Object> obj : list) {
-                Thread t = new Thread();
-
-                t.setSubject(obj.get("subject").toString());
-                listThreads.add(t);
-              //  System.out.println(obj.get("username").toString());
-
-            }
-
-        } catch (IOException ex) {
-         }
-        return listThreads;
-
-    }
     
 }

@@ -13,8 +13,18 @@ public class Voiture {
     
     private int id,nbPlaces;
     private String matricule,marque,description;
-
+    public int proprietaire_id;
+    
+    
     public Voiture() {
+    }
+
+    public int getProprietaire_id() {
+        return proprietaire_id;
+    }
+
+    public void setProprietaire_id(int proprietaire_id) {
+        this.proprietaire_id = proprietaire_id;
     }
 
     public String getDescription() {

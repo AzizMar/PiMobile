@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component type="Form" name="MESSAGES_GUI" cloudDestinationProperty="MESSAGES_GUI" >
+  <component type="Button" name="btnAjouter" cloudDestinationProperty="btnAjouter" text="Ajouter" >
+  </component>
+</component>
