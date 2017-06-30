@@ -109,9 +109,10 @@ public class Login {
                          
                           if (u.getUsername().equals(txtLogin.getText()) && u.getPassword().startsWith(txtPwd.getText())) {
                             
-                            //  GUI.user.Home uh = new GUI.user.Home();
                         System.out.println("login success²");
-
+                        
+                              GUI.user.Home uh = new GUI.user.Home(theme);
+                              uh.getF().show();
                             
                             break;
                         }
