@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <resource majorVersion="1" minorVersion="7" useXmlUI="false">
+    <ui name="AJOUTER_VOITURE_GUI" />
     <image name="back-command.png" type="multi"  />
     <image name="border.png"  />
     <image name="Button.dis#borderBottom_1.png" type="multi"  />
@@ -66,6 +67,8 @@
     <image name="OKGR.borderTopR_1.png" type="multi"  />
     <ui name="PROFILE_GUI" />
     <ui name="REGISTER_GUI" />
+    <image name="road.jpg"  />
+    <image name="roadMobile.png"  />
     <image name="round.png" type="multi"  />
     <image name="sliderBlueCenter.png" type="multi"  />
     <image name="sliderBlueLeft.png" type="multi"  />
@@ -817,4 +820,5 @@
     <image name="TitleArea.borderTopL_2.png" type="multi"  />
     <image name="TitleArea.borderTopR_2.png" type="multi"  />
     <ui name="TRAJETS_GUI" />
+    <ui name="VOITURE_GUI" />
 </resource>

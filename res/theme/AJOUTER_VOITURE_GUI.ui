@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component type="Form" name="AJOUTER_VOITURE_GUI" cloudDestinationProperty="AJOUTER_VOITURE_GUI" layout="FlowLayout" flowLayoutFillRows="false" flowLayoutAlign="4" flowLayoutValign="0" >
+  <component type="Container" name="Container" cloudDestinationProperty="Container" layout="BoxLayout" boxLayoutAxis="Y" >
+    <component type="Label" name="lblMatricule" cloudDestinationProperty="lblMatricule" text="Matricule" >
+    </component>
+    <component type="TextField" name="txtMatricule" cloudBoundProperty="text" cloudDestinationProperty="txtMatricule" text="" >
+    </component>
+    <component type="Label" name="lblMarque" cloudDestinationProperty="lblMarque" text="Marque" >
+    </component>
+    <component type="TextField" name="txtMarque" cloudBoundProperty="text" cloudDestinationProperty="txtMarque" uiid="TextField" text="" >
+    </component>
+    <component type="Label" name="lblNbPlaces" cloudDestinationProperty="lblNbPlaces" text="Nombre de places" >
+    </component>
+    <component type="TextField" name="txtNbPlaces" cloudBoundProperty="text" cloudDestinationProperty="txtNbPlaces" text="" >
+    </component>
+    <component type="Label" name="lblDescription" cloudDestinationProperty="lblDescription" text="Description" >
+    </component>
+    <component type="TextField" name="txtDescription" cloudBoundProperty="text" cloudDestinationProperty="txtDescription" text="" >
+    </component>
+    <component type="Button" name="btnAjouter" cloudDestinationProperty="btnAjouter" text="Ajouter" >
+    </component>
+  </component>
+</component>

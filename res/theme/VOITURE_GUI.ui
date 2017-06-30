@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component type="Form" name="VOITURE_GUI" cloudDestinationProperty="VOITURE_GUI" layout="FlowLayout" flowLayoutFillRows="false" flowLayoutAlign="4" flowLayoutValign="0" >
+  <component type="Container" name="Container1" cloudDestinationProperty="Container1" layout="BoxLayout" boxLayoutAxis="Y" >
+  </component>
+  <component type="Button" name="btnAjouter" cloudDestinationProperty="btnAjouter" text="Ajouter" >
+  </component>
+</component>

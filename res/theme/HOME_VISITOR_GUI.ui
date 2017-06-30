@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<component type="Form" name="HOME_VISITOR_GUI" cloudDestinationProperty="HOME_VISITOR_GUI" layout="FlowLayout" flowLayoutFillRows="false" flowLayoutAlign="4" flowLayoutValign="4" >
+<component type="Form" name="HOME_VISITOR_GUI" cloudDestinationProperty="HOME_VISITOR_GUI" layout="FlowLayout" flowLayoutFillRows="false" flowLayoutAlign="4" flowLayoutValign="0" >
   <component type="Container" name="Container" cloudDestinationProperty="Container" layout="BoxLayout" boxLayoutAxis="Y" >
     <component type="ImageViewer" name="imgHeader" cloudDestinationProperty="imgHeader" >
-      <custom name="image" type="com.codename1.ui.Image" value="switch_on.png" />
+      <custom name="image" type="com.codename1.ui.Image" value="roadMobile.png" />
     </component>
     <component type="Label" name="lblDepart" cloudDestinationProperty="lblDepart" text="Depart" >
     </component>

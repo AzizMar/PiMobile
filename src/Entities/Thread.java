@@ -11,4 +11,53 @@ package Entities;
  */
 public class Thread {
     
+    private int  id,created_by_id;
+    private String subject;
+
+    public Thread(int id, int created_by_id, String subject) {
+        this.id = id;
+        this.created_by_id = created_by_id;
+        this.subject = subject;
+    }
+
+    public Thread() {
+    }
+
+    
+   
+    
+    
+    
+    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getCreatedById() {
+        return created_by_id;
+    }
+
+    public void setCreatedById(int createdById) {
+        this.created_by_id = createdById;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
 }
